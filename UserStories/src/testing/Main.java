@@ -1,8 +1,7 @@
 package testing;
 
-import testing.CreateAccount;
 import java.util.Scanner;
-import testing.Accounts;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +14,8 @@ public class Main {
 		
 		//Create a key Map with the key being the username and the value being the account info
 		Map<String, Accounts> accountsMap = new HashMap<>();
-		
+		//accountsMap.put("john", new Accounts("john", "John", "Block", "johnB@gmail.com", "mypassword"));
+
 		//Create default account = nothing
 		Accounts account = new Accounts();
 		
@@ -24,11 +24,26 @@ public class Main {
 			account = CreateAccount.AccountCreation();
 			//Put the account username into the map
 	        accountsMap.put(account.getUName(), account);
+			System.out.println("Account created.");
 		}
         
         //This is a test to print the password
         //System.out.println(accountsMap.get(account.getUName()).getPassword());	
         
+		//If user inputs login then ask for username and password, and perform login
+		if (accountOrLogin.equals("login")) {
+			account = Login.userLogin(accountsMap);
+			System.out.println("Welcome " + account.getFName() + "!");
+		}
+
+		//test for correct login
+		//System.out.println(Login.checkLogin(accountsMap, "john", "mypassword"));
+
+		//test for incorrect login
+		//System.out.println(Login.checkLogin(accountsMap, "john", "wrongpassword"));
+
+		//test for non-existent user login
+		//System.out.println(Login.checkLogin(accountsMap, "bob", "12345"));
 	}
 
 	public static String AccountOrLogin() {
@@ -49,4 +64,5 @@ public class Main {
 			}
 		}
 	}
+
 }
