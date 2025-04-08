@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 // ToDoList class to manage a list of Task objects
-public class ToDoList {
+public class toDoList {
 
     // List to store tasks
     private List<Task> tasks;
 
     // Constructor: initializes an empty task list
-    public ToDoList() {
+    public toDoList() {
         tasks = new ArrayList<>();
     }
 
